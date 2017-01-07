@@ -1,22 +1,20 @@
-import feedparser
-
 import click
 from flask import Flask
 
-from bee_feed.urls import URLS
+from bee_feed import utils
+from bee_feed import urls
 
 
 App = Flask(__name__)
 
 
-def gen_feed(urls):
-    for url in urls:
-        yield feedparser.parse(url)
-
-
 @App.route('/simple/')
-def simple():
-    return str(list(gen_feed(URLS)))
+@App.route('/simple/<num>')
+def simple(num=None):
+    data = list(utils.gen_feed(urls.URLS))[0]['entries']
+    if num is not None:
+        data = data[int(num)]
+    return str(data)
 
 
 @click.group()
