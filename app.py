@@ -13,7 +13,10 @@ App = Flask(__name__)
 def simple(num=None):
     data = list(utils.gen_feed(urls.URLS))[0]['entries']
     if num is not None:
-        data = data[int(num)]
+        try:
+            data = data[int(num)]
+        except:
+            data = "No item %s" % num
     return str(data)
 
 
