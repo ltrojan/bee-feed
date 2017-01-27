@@ -1,11 +1,16 @@
 import click
-from flask import Flask
+import flask
 
 from bee_feed import utils
 from bee_feed import urls
 
 
-App = Flask(__name__)
+App = flask.Flask(__name__)
+
+
+@App.route('/')
+def home():
+    return flask.render_template('home.html')
 
 
 @App.route('/simple/')
