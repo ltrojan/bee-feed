@@ -13,16 +13,26 @@ def home():
     return flask.render_template('home.html')
 
 
-@App.route('/simple/')
-@App.route('/simple/<num>')
-def simple(num=None):
+@App.route('/silly/')
+def silly():
+    return flask.render_template('silly.html')
+
+
+@App.route('/feed/')
+@App.route('/feed')
+def feed(num=None):
+    def ent_to_data(ent):
+        return (ent['title'],
+                ent['published'],
+                flask.Markup(ent['summary']))
     data = list(utils.gen_feed(urls.URLS))[0]['entries']
+    data = [ent_to_data(ent) for ent in data]
     if num is not None:
         try:
             data = data[int(num)]
         except:
             data = "No item %s" % num
-    return str(data)
+    return flask.render_template('feed.html', data=data)
 
 
 @click.group()
