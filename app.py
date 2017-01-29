@@ -13,11 +13,6 @@ def home():
     return flask.render_template('home.html')
 
 
-@App.route('/silly/')
-def silly():
-    return flask.render_template('silly.html')
-
-
 @App.route('/feed/')
 @App.route('/feed')
 def feed(num=None):
