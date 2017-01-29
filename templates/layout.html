@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<!-- layout.html base template -->
+
+<html lang="en">
+
+  <head>
+    <title>bee-feed</title>
+    <link
+	rel="stylesheet"
+	type="text/css"
+	href="{{ url_for('static', filename='css/w3.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block head %}
+    {% endblock %}
+  </head>
+
+  <body>
+    <header class="w3-container w3-yellow w3-text-deep-orange">
+      {% block top %}
+      <h1 class="logo">
+	<img
+	    src="{{ url_for('static', filename='imgs/logo_temp.png') }}"
+	    alt="Logo"
+	    width="40">
+	<span>Bee Feed</span>
+      </h1>
+      {% endblock %}
+    </header>
+
+    <div class="w3-container w3-padding-0 w3-center">
+      <ul class="w3-navbar w3-yellow w3-text-deep-orange">
+	<li><a href="/">Home</a></li>
+	<li><a href="/feed/">Live Bee Feed</a></li>
+      </ul>
+    </div>
+
+    <div class="w3-container w3-padding-0">
+      {% block body %}
+      <p>
+	No Content
+      </p>
+    {% endblock %}
+    </div>
+
+
+    <footer class="w3-container w3-yellow w3-text-deep-orange">
+      {% block tail %}
+      <p>Bee-Feed by Hector</p>
+      {% endblock %}
+    </footer>
+  </body>
+
+</html>

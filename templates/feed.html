@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% from "macro.html" import build_list with context %}
+
+{% block body %}
+
+{{ build_list(data) }}
+
+{% endblock %}
