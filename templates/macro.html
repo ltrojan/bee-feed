@@ -1,0 +1,22 @@
+{% macro build_block(title, date, text) -%}
+<div class="w3-panel w3-card-4 w3-padding-0>
+  <header class="w3-container w3-light-grey">
+    <h3 class='w3-text-cyan'>{{ title }} </h3>
+    <p>{{ date }}</p>
+  </header>
+  <div class="w3-container w3-khaki">
+    <p class="w3-hide">
+      {{ text }}
+    </p>
+  </div>
+</div>
+{%- endmacro %}
+
+
+{% macro build_list(data) -%}
+<div class="w3-container w3-light-green"> <!-- start -->
+  {% for title, date, text in data %}
+  {{ build_block(title, date, text) }}
+  {% endfor %}
+</div> <!-- end -->
+{%- endmacro %}
