@@ -10,14 +10,16 @@ class Entry(object):
         return cls(
             title=data[0],
             date=data[1],
-            text=data[2])
+            text=data[2],
+            ori='Local')
 
     @classmethod
-    def from_rss(cls, data):
+    def from_rss(cls, ori, data):
         return cls(
             title=data['title'],
             date=data['published'],
-            text=data['summary'])
+            text=data['summary'],
+            ori=ori)
 
     def __repr__(self):
         return " ".join([
@@ -35,7 +37,7 @@ class Entries(list):
         return obj
 
     @classmethod
-    def from_rss(cls, data):
-        obj = cls(Entry.from_rss(row) for row in data)
+    def from_rss(cls, ori, data):
+        obj = cls(Entry.from_rss(ori, row) for row in data)
         obj.sort(key=lambda x: x.date)
         return obj
