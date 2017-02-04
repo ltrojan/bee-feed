@@ -1,3 +1,4 @@
+import itertools
 import feedparser
 
 
@@ -15,3 +16,7 @@ def gen_entries(named_urls):
         for ent in get_feed(url)['entries']:
             ent['ori'] = ori
             yield ent
+
+
+def get_entries(named_urls, num=10):
+    return itertools.islice(gen_entries(named_urls), 10)
