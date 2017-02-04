@@ -14,12 +14,14 @@ class Entry(object):
             ori='Blog')
 
     @classmethod
-    def from_rss(cls, ori, data):
+    def from_rss(cls, data):
+        if 'ori' not in data:
+            data['ori'] = 'RSS Not Specified'
         return cls(
             title=data['title'],
             date=data['published'],
             text=data['summary'],
-            ori=ori)
+            ori=data['ori'])
 
     def __repr__(self):
         return " ".join([
@@ -37,7 +39,12 @@ class Entries(list):
         return obj
 
     @classmethod
-    def from_rss(cls, ori, data):
-        obj = cls(Entry.from_rss(ori, row) for row in data)
+    def from_rss(cls, data):
+        obj = cls(Entry.from_rss(row) for row in data)
         obj.sort(key=lambda x: x.date)
         return obj
+
+    def __add__(self, other):
+        ret = self.__class__(list.__add__(self, other))
+        # sort ret??
+        return ret
