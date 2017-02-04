@@ -9,9 +9,9 @@ class Entry(object):
     def from_db(cls, data):
         return cls(
             title=data[0],
-            date=data[1],
-            text=data[2],
-            ori='Local')
+            text=data[1],
+            date=data[2],
+            ori='Blog')
 
     @classmethod
     def from_rss(cls, ori, data):
