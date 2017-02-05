@@ -14,4 +14,4 @@ def get_entries(db=None, named_urls=None):
             rss_utils.get_entries(named_urls))
     ents = sql_ents + rss_ents
     # sort ents???
-    return ents
+    return ents[:10]
