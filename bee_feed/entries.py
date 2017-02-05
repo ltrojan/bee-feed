@@ -50,5 +50,7 @@ class Entries(list):
 
     def __add__(self, other):
         ret = self.__class__(list.__add__(self, other))
-        # sort ret??
+        ret.sort(
+            key=lambda x: time.mktime(x.date.timetuple()),
+            reverse=True)
         return ret
