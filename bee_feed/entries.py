@@ -1,3 +1,7 @@
+from dateutil import parser
+import time
+
+
 class Entry(object):
     def __init__(self, title, date, text, ori=None):
         self.title = title
@@ -10,7 +14,7 @@ class Entry(object):
         return cls(
             title=data[0],
             text=data[1],
-            date=data[2],
+            date=parser.parse(data[2]),
             ori='Blog')
 
     @classmethod
@@ -19,7 +23,7 @@ class Entry(object):
             data['ori'] = 'RSS Not Specified'
         return cls(
             title=data['title'],
-            date=data['published'],
+            date=parser.parse(data['published']),
             text=data['summary'],
             ori=data['ori'])
 
@@ -27,7 +31,7 @@ class Entry(object):
         return " ".join([
             "Entry",
             self.title,
-            self.date])
+            str(self.date)])
 
 
 class Entries(list):
