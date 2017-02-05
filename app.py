@@ -1,11 +1,25 @@
+from contextlib import closing
 import click
 import flask
 
+import app_conf
 from bee_feed import utils
-from bee_feed import urls
+from bee_feed import sql_utils
 
 
 App = flask.Flask(__name__)
+
+
+@App.before_request
+def before_request():
+    flask.g.db = sql_utils.connect_db(app_conf.URL_DB)
+
+
+@App.teardown_request
+def teardown_request(exception):
+    db = getattr(flask.g, 'db', None)
+    if db is not None:
+        db.close()
 
 
 @App.route('/')
@@ -14,30 +28,38 @@ def home():
 
 
 @App.route('/feed/')
-@App.route('/feed')
 def feed(num=None):
+
     def ent_to_data(ent):
-        return (ent['title'],
-                ent['published'],
-                flask.Markup(ent['summary']))
-    data = list(utils.gen_feed(urls.URLS))[0]['entries']
-    data = [ent_to_data(ent) for ent in data]
-    if num is not None:
-        try:
-            data = data[int(num)]
-        except:
-            data = "No item %s" % num
+        return (str(ent.title),
+                str(ent.date),
+                flask.Markup(ent.text))
+
+    data = [ent_to_data(ent)
+            for ent in utils.get_entries(
+                    db=getattr(flask.g, 'db', None),
+                    named_urls=app_conf.Named_Urls)]
+
     return flask.render_template('feed.html', data=data)
 
 
 @click.group()
 @click.option('--debug', default=True)
 @click.option('--threaded', default=True)
+@click.option('--url_db', default=app_conf.URL_DB)
 @click.pass_context
-def cli(ctx, debug, threaded):
+def cli(ctx, debug, threaded, url_db):
     ctx.obj['DEBUG'] = debug
     ctx.obj['THREADED'] = threaded
+    ctx.obj['URL_DB'] = url_db
     return None
+
+
+@cli.command()
+@click.pass_context
+def init_db(ctx):
+    with closing(sql_utils.connect_db(ctx.obj['URL_DB'])) as db:
+        sql_utils.init_db(db)
 
 
 @cli.command()
