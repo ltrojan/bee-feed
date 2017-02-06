@@ -3,6 +3,17 @@
 {% from "macro.html" import add_entry with context %}
 {% from "macro.html" import build_list with context %}
 
+
+{% block head %}
+<script
+    type="text/javascript"
+    src="{{ url_for('static', filename='scripts/callbacks.js') }}"></script>
+<script
+    type="text/javascript"
+    src="{{ url_for('static', filename='scripts/jquery/jquery.js') }}"></script>
+{% endblock %}
+
+
 {% block body %}
 
 {% if session.logged_in and session.username %}
@@ -10,5 +21,15 @@
 {% endif %}
 
 {{ build_list(data) }}
+
+
+<script type="text/javascript">
+ $(document).ready(function(){
+   $(".entry").dblclick(function(){
+     toggleEntry(this)
+   });
+ });
+</script>
+
 
 {% endblock %}

@@ -11,12 +11,6 @@
 	type="text/css"
 	href="{{ url_for('static', filename='css/w3.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script
-	type="text/javascript"
-	src="{{ url_for('static', filename='scripts/callbacks.js') }}"></script>
-    <script
-	type="text/javascript"
-	src="{{ url_for('static', filename='scripts/jquery/jquery.js') }}"></script>
     {% block head %}
     {% endblock %}
   </head>
@@ -63,13 +57,5 @@
       {% endblock %}
     </footer>
   </body>
-
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $(".entry").click(function(){
-	toggleEntry(this)
-      });
-    });
-  </script>
 
 </html>
