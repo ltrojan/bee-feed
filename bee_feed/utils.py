@@ -1,3 +1,5 @@
+import markdown
+
 from . import sql_utils
 from . import rss_utils
 from . import entries
@@ -15,3 +17,7 @@ def get_entries(db=None, named_urls=None):
     ents = sql_ents + rss_ents
     # sort ents???
     return ents[:10]
+
+
+def to_html(text):
+    return markdown.Markdown().convert(text)

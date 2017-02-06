@@ -1,14 +1,24 @@
 {% extends "layout.html" %}
 {% block body %}
-<h2>Login</h2>
+
 {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-  <form action="{{ url_for('login') }}" method=post>
-    <dl>
-      <dt>Username:
-	<dd><input type=text name=username>
-	  <dt>Password:
-	    <dd><input type=password name=password>
-	      <dd><input type=submit value=Login>
-    </dl>
+
+<div class='w3-container'>
+  <!-- form -->
+  <form action="{{ url_for('login') }}" method=post class="w3-panel w3-card-4 w3-light-grey">
+    <h2 class="w3-text-blue">Login</h2>
+    <p>
+      <label class="w3-label w3-text-blue">User Name:</label>
+      <input class="w3-input w3-border" type="text" name=username>
+    </p>
+    <p>
+      <label class="w3-label w3-text-blue">Password:</label><br>
+      <input class="w3-input w3-border" type="password" name=password>
+    </p>
+    <p>
+      <button class="w3-btn w3-blue" type=submit value=Login>Submit</button>
+    </p>
   </form>
-  {% endblock %}
+</div>
+
+{% endblock %}
