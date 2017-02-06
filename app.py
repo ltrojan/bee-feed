@@ -60,6 +60,7 @@ def login():
             error = 'Invalid password'
         else:
             flask.session['logged_in'] = True
+            flask.session['username'] = 'ltrojan'
             flask.flash('You were logged in')
             return flask.redirect(flask.url_for('feed'))
     return flask.render_template('login.html', error=error)
@@ -68,6 +69,7 @@ def login():
 @App.route('/logout')
 def logout():
     flask.session.pop('logged_in', None)
+    flask.session.pop('username', None)
     flask.flash('You were logged out')
     return flask.redirect(flask.url_for('feed'))
 
