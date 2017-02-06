@@ -32,6 +32,11 @@
       <ul class="w3-navbar w3-yellow w3-text-deep-orange">
 	<li><a href="/">Home</a></li>
 	<li><a href="/feed/">Live Bee Feed</a></li>
+	{% if username %}
+	<li><a href="/logout/">Username: {{ username }}</a></li>
+	{% else %}
+	<li><a href="/login/">Login</a></li>
+	{% endif %}
       </ul>
     </div>
 

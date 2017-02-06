@@ -25,7 +25,7 @@ def teardown_request(exception):
 
 @App.route('/')
 def home():
-    return flask.render_template('home.html')
+    return flask.render_template('home.html', username=flask.session.get('username', None))
 
 
 @App.route('/feed/')
@@ -41,7 +41,10 @@ def feed(num=None):
                     db=getattr(flask.g, 'db', None),
                     named_urls=app_conf.Named_Urls)]
 
-    return flask.render_template('feed.html', data=data)
+    return flask.render_template(
+        'feed.html',
+        data=data,
+        username=flask.session.get('username', None))
 
 
 @App.route('/login/', methods=['GET', 'POST'])
