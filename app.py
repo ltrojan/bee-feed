@@ -44,14 +44,13 @@ def feed(num=None):
     return flask.render_template('feed.html', data=data)
 
 
-@App.route('/login', methods=['GET', 'POST'])
+@App.route('/login/', methods=['GET', 'POST'])
 def login():
     error = None
-    if 'logged_in' in flask.session:
-        print('logged in in session...')
+    if 'logged_in' in flask.session and 'username' in flask.session:
         if flask.session['logged_in']:
             flask.flash('You are logged in!')
-            returnf lask.redirect(flask.url_for('feed'))
+            return flask.redirect(flask.url_for('feed'))
     if flask.request.method == 'POST':
 
         if flask.request.form['username'] != 'ltrojan':      # App.config['USERNAME']:
