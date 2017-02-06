@@ -47,6 +47,18 @@ def feed(num=None):
         username=flask.session.get('username', None))
 
 
+@App.route('/add_entry/', methods=['GET', 'POST'])
+def add_entry():
+    if not flask.session.get('logged_in', False) or flask.session.get('username', '') == '':
+        abort(401)
+    sql_utils.add_entry(
+        flask.g.db,
+        flask.request.form['title'],
+        utils.to_html(flask.request.form['text']))
+    flask.flash('New entry was successfully posted')
+    return flask.redirect(flask.url_for('feed'))
+
+
 @App.route('/login/', methods=['GET', 'POST'])
 def login():
     error = None
