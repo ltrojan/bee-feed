@@ -1,24 +1,12 @@
 {% extends "layout.html" %}
 
+{% from "macro.html" import add_entry with context %}
 {% from "macro.html" import build_list with context %}
 
 {% block body %}
 
 {% if session.logged_in and session.username %}
-<div class='w3-container'>
-  <!-- form -->
-  <div class="w3-panel w3-card-4 w3-light-grey">
-    <form action="{{ url_for('add_entry') }}" method=post>
-      <dl>
-	<dt>Title:
-	  <dd><input type=text size=30 name=title>
-	    <dt>Text:
-	      <dd><textarea name=text rows=5 cols=40></textarea>
-		<dd><input type=submit value=Share>
-      </dl>
-    </form>
-  </div>
-</div>
+{{ add_entry() }}
 {% endif %}
 
 {{ build_list(data) }}
