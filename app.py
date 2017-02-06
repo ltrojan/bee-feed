@@ -65,7 +65,7 @@ def login():
     return flask.render_template('login.html', error=error)
 
 
-@App.route('/logout')
+@App.route('/logout/')
 def logout():
     flask.session.pop('logged_in', None)
     flask.session.pop('username', None)
