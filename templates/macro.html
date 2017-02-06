@@ -1,13 +1,11 @@
 {% macro build_block(title, date, text) -%}
-<div class="w3-panel w3-card-4 w3-padding-0">
+<div class="w3-panel w3-card-4 w3-padding-0 entry">
   <header class="w3-container w3-light-grey">
-    <h3 class='w3-text-cyan'>{{ title }} </h3>
+    <h3 class='w3-text-cyan entry-title'>{{ title }} </h3>
     <p>{{ date }}</p>
   </header>
-  <div class="w3-container w3-khaki">
-    <span class="w3-container w3-hide">
+  <div class="w3-container w3-khaki w3-hide entry-text">
       {{ text }}
-    </span>
   </div>
 </div>
 {%- endmacro %}
