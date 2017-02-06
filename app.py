@@ -8,6 +8,7 @@ from bee_feed import sql_utils
 
 
 App = flask.Flask(__name__)
+App.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 
 @App.before_request
@@ -41,6 +42,34 @@ def feed(num=None):
                     named_urls=app_conf.Named_Urls)]
 
     return flask.render_template('feed.html', data=data)
+
+
+@App.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if 'logged_in' in flask.session:
+        print('logged in in session...')
+        if flask.session['logged_in']:
+            flask.flash('You are logged in!')
+            returnf lask.redirect(flask.url_for('feed'))
+    if flask.request.method == 'POST':
+
+        if flask.request.form['username'] != 'ltrojan':      # App.config['USERNAME']:
+            error = 'Invalid username'
+        elif flask.request.form['password'] != 'test1234':   # App.config['PASSWORD']:
+            error = 'Invalid password'
+        else:
+            flask.session['logged_in'] = True
+            flask.flash('You were logged in')
+            return flask.redirect(flask.url_for('feed'))
+    return flask.render_template('login.html', error=error)
+
+
+@App.route('/logout')
+def logout():
+    flask.session.pop('logged_in', None)
+    flask.flash('You were logged out')
+    return flask.redirect(flask.url_for('feed'))
 
 
 @click.group()
