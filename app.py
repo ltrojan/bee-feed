@@ -8,6 +8,7 @@ from bee_feed import sql_utils
 
 
 App = flask.Flask(__name__)
+App.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 
 @App.before_request
@@ -24,7 +25,7 @@ def teardown_request(exception):
 
 @App.route('/')
 def home():
-    return flask.render_template('home.html')
+    return flask.render_template('home.html', username=flask.session.get('username', None))
 
 
 @App.route('/feed/')
@@ -40,7 +41,39 @@ def feed(num=None):
                     db=getattr(flask.g, 'db', None),
                     named_urls=app_conf.Named_Urls)]
 
-    return flask.render_template('feed.html', data=data)
+    return flask.render_template(
+        'feed.html',
+        data=data,
+        username=flask.session.get('username', None))
+
+
+@App.route('/login/', methods=['GET', 'POST'])
+def login():
+    error = None
+    if 'logged_in' in flask.session and 'username' in flask.session:
+        if flask.session['logged_in']:
+            flask.flash('You are logged in!')
+            return flask.redirect(flask.url_for('feed'))
+    if flask.request.method == 'POST':
+
+        if flask.request.form['username'] != 'ltrojan':      # App.config['USERNAME']:
+            error = 'Invalid username'
+        elif flask.request.form['password'] != 'test1234':   # App.config['PASSWORD']:
+            error = 'Invalid password'
+        else:
+            flask.session['logged_in'] = True
+            flask.session['username'] = 'ltrojan'
+            flask.flash('You were logged in')
+            return flask.redirect(flask.url_for('feed'))
+    return flask.render_template('login.html', error=error)
+
+
+@App.route('/logout/')
+def logout():
+    flask.session.pop('logged_in', None)
+    flask.session.pop('username', None)
+    flask.flash('You were logged out')
+    return flask.redirect(flask.url_for('feed'))
 
 
 @click.group()
