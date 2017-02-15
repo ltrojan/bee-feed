@@ -102,6 +102,13 @@ def cli(ctx, debug, threaded, url_db):
 
 @cli.command()
 @click.pass_context
+def clean_db(ctx):
+    with closing(sql_utils.connect_db(ctx.obj['URL_DB'])) as db:
+        sql_utils.clean_db(db)
+
+
+@cli.command()
+@click.pass_context
 def init_db(ctx):
     with closing(sql_utils.connect_db(ctx.obj['URL_DB'])) as db:
         sql_utils.init_db(db)
