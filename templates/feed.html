@@ -25,8 +25,9 @@
 
 <script type="text/javascript">
  $(document).ready(function(){
-   $(".entry").click(function(){
-     toggleEntry(this)
+   $(".entry-title").click(function(){
+     txt = $(this.parentNode.parentNode).find(".entry-text")
+     toggleEntry(txt)
    });
  });
 </script>
