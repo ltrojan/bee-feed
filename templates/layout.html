@@ -16,22 +16,23 @@
   </head>
 
   <body>
-    <header class="w3-container w3-yellow w3-text-deep-orange">
+    <header class="w3-container w3-yellow w3-text-deep-orange head">
       {% block top %}
       <h1 class="logo">
 	<img
 	    src="{{ url_for('static', filename='imgs/killinchy_logo_alp_trim_sym.png') }}"
 	    alt="Logo"
 	    width="40">
-	<span>Bee Feed</span>
+	<span>The Killinchy Beekeepers Association</span>
       </h1>
       {% endblock %}
     </header>
 
-    <div class="w3-container w3-padding-0 w3-center">
+    <div class="w3-container w3-padding-0 w3-center nav">
       <ul class="w3-navbar w3-yellow w3-text-deep-orange">
 	<li><a href="/">Home</a></li>
-	<li><a href="/feed/">Live Bee Feed</a></li>
+	<li><a href="/about/">About</a></li>
+	<li><a href="/feed/">News</a></li>
 	{% if username %}
 	<li><a href="/logout/">{{ username }} (logout)</a></li>
 	{% else %}
