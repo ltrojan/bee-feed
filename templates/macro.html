@@ -2,10 +2,9 @@
 <div class="w3-panel w3-card-4 w3-padding-0 entry">
   <header class="w3-container w3-light-grey">
     <h3 class="w3-text-blue entry-title">{{ title }} </h3>
-    <p class="w3-small">{{ date }}</p>
-    {% if addr|length > 1 %}
-    <p><a href={{addr}}>{{ori}}</a></p>
-    {% endif %}
+    <p class="w3-medium">
+      {{ date }}{% if addr|length > 1 %}, <a href={{addr}}>{{ori}}</a>{% endif %}
+    </p>
   </header>
   <div class="w3-container w3-khaki w3-hide entry-text">
       {{ text }}
