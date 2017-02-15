@@ -2,5 +2,50 @@
 
 
 {% block body %}
-<p>Welcome!</p>
+<div class="w3-panel w3-padding-0">
+  <img
+     src="{{ url_for('static', filename='imgs/homepage.jpg') }}"
+     class="w3-round-xlarge"
+     alt="Logo"
+     style="width:100%">
+</div>
+<div class="w3-container w3-light-gray">
+  <div class="w3-row-padding">
+    <div class="w3-quarter">
+      <div class="w3-panel w3-card w3-border w3-circle w3-sand">
+	<p>
+	  <img
+	     src="{{ url_for('static', filename='imgs/killinchy_logo_alp_trim.png') }}"
+	     alt="Logo"
+	     style="width:100%">
+	</p>
+      </div>
+    </div>
+    <div class="w3-threequarter w3-center" style="display: block">
+      <h1>Welcome to the Killincy Beekeepers Association Webpage</h1>
+      <p>
+	We are an Association of Beekeepers in the Killinchy District and surrounding area of County Down
+	in Northern Ireland.
+      </p>
+      <p>
+	Our aim is to support beekeepers by providing the education necessary to maintain happy and
+	healthy
+	colonies of honey bees.
+      </p>
+      <p>
+	We meet on the 4th Wednesday of each month, providing an informative and entertaining programme
+	of
+	talks and events throughout the year.
+      </p>
+      <p>
+	If you are not a beekeeper yet, we hope this site will help you become better informed about bees
+	and beekeeping and be impressed and amazed (like the rest of us) by all that beekeeping entails.
+      </p>
+      <p>
+	Please feel free to contact us for any enquiries you may have.
+      </p>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
