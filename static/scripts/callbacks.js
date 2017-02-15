@@ -1,7 +1,5 @@
-function toggleEntry(emitter){
+function toggleEntry(txt){
     console.log("Entry clicked!");
-    console.log(emitter)
-    txt = $(emitter).find(".entry-text")
     if (txt.hasClass('w3-hide')) {
 	txt.removeClass('w3-hide')
     } else {

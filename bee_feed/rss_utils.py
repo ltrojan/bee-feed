@@ -18,5 +18,8 @@ def gen_entries(named_urls):
             yield ent
 
 
-def get_entries(named_urls, num=10):
-    return itertools.islice(gen_entries(named_urls), 10)
+def get_entries(named_urls, num=None):
+    gen = gen_entries(named_urls)
+    if num is None:
+        return list(gen)
+    return itertools.islice(gen, num)

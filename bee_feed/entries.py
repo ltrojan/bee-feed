@@ -36,17 +36,27 @@ class Entry(object):
 
 class Entries(list):
 
+    def __init__(self, *ar, **kw):
+        list.__init__(self, *ar, **kw)
+        self.sort()
+
     @classmethod
     def from_db(cls, data):
-        obj = cls(Entry.from_db(row) for row in data)
-        obj.sort(key=lambda x: x.date)
-        return obj
+        return cls(Entry.from_db(row) for row in data)
 
     @classmethod
     def from_rss(cls, data):
-        obj = cls(Entry.from_rss(row) for row in data)
-        obj.sort(key=lambda x: x.date)
-        return obj
+        return cls(Entry.from_rss(row) for row in data)
+
+    def sort(self, *ar, **kw):
+        if 'key' not in kw:
+            kw['key'] = lambda x: time.mktime(x.date.timetuple())
+        if 'reverse' not in kw:
+            kw['reverse'] = True
+        list.sort(self, *ar, **kw)
+
+    def __getslice__(self, *ar, **kw):
+        return self.__class__(list.__getslice__(self, *ar, **kw))
 
     def __add__(self, other):
         ret = self.__class__(list.__add__(self, other))

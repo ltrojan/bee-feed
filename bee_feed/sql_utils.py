@@ -14,6 +14,12 @@ def connect_db(url):
     return sqlite3.connect(url_to_addr(url))
 
 
+def clean_db(db):
+    db.cursor().executescript(queries.clean_db_full)
+    db.cursor().executescript(queries.create_db_full)
+    db.commit()
+
+
 def init_db(db):
     db.cursor().executescript(queries.clean_db)
     db.cursor().executescript(queries.create_db)

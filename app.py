@@ -32,8 +32,13 @@ def home():
 def feed(num=None):
 
     def ent_to_data(ent):
+        origin = app_conf.Named_Ass.get(
+                ent.ori,
+                {"title": ent.ori, "homepage": ""})
         return (str(ent.title),
-                str(ent.date),
+                ent.date.strftime("%a %d %b %Y"),
+                origin['title'],
+                origin['homepage'],
                 flask.Markup(ent.text))
 
     data = [ent_to_data(ent)
@@ -98,6 +103,13 @@ def cli(ctx, debug, threaded, url_db):
     ctx.obj['THREADED'] = threaded
     ctx.obj['URL_DB'] = url_db
     return None
+
+
+@cli.command()
+@click.pass_context
+def clean_db(ctx):
+    with closing(sql_utils.connect_db(ctx.obj['URL_DB'])) as db:
+        sql_utils.clean_db(db)
 
 
 @cli.command()

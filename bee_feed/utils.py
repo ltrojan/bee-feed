@@ -15,8 +15,7 @@ def get_entries(db=None, named_urls=None):
         rss_ents = entries.Entries.from_rss(
             rss_utils.get_entries(named_urls))
     ents = sql_ents + rss_ents
-    # sort ents???
-    return ents[:10]
+    return ents[:25]
 
 
 def to_html(text):
