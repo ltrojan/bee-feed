@@ -32,8 +32,13 @@ def home():
 def feed(num=None):
 
     def ent_to_data(ent):
+        origin = app_conf.Named_Ass.get(
+                ent.ori,
+                {"title": ent.ori, "homepage": ""})
         return (str(ent.title),
-                str(ent.date),
+                ent.date.strftime("%a %d %b %Y"),
+                origin['title'],
+                origin['homepage'],
                 flask.Markup(ent.text))
 
     data = [ent_to_data(ent)
