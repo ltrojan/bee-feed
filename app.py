@@ -24,9 +24,13 @@ def teardown_request(exception):
 
 
 @App.route('/')
-@App.route('/about/')
 def home():
     return flask.render_template('home.html', username=flask.session.get('username', None))
+
+
+@App.route('/about/')
+def about():
+    return flask.render_template('about.html', username=flask.session.get('username', None))
 
 
 @App.route('/feed/')
