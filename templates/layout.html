@@ -43,8 +43,8 @@
       {% endif %}
     </nav>
 
-    <div class="w3-container">
-      <div class="w3-container w3-main">
+    <div class="w3-container w3-main" style="margin-left:200px">
+      <div class="w3-container">
 	<header class="w3-card-2 w3-panel w3-round-xlarge w3-light-gray">
 	  <span class="w3-opennav w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</span>
 	  <h1 class="w3-text-blue">The Killinchy Beekeepers Association</h1>
@@ -55,7 +55,7 @@
 	Hello!
 	{% endblock %}
       </div>
-      <footer class="w3-container w3-padding-0" style="margin-left:10%">
+      <footer class="w3-container w3-padding-0">
 	<div class="w3-display-container w3-margin">
 	  <img
 	      src="{{ url_for('static', filename='imgs/homepage_bottom.jpg') }}"
