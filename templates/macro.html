@@ -1,12 +1,12 @@
 {% macro build_block(title, date, ori, addr, text) -%}
-<div class="w3-panel w3-card-4 w3-padding-0 entry">
-  <header class="w3-container w3-light-grey">
+<div class="w3-panel w3-round-xlarge w3-card-2 w3-light-grey entry">
+  <header class="w3-container w3-padding-0">
     <h3 class="w3-text-blue entry-title">{{ title }} </h3>
     <p class="w3-medium">
       {{ date }}{% if addr|length > 1 %}, <a href={{addr}}>{{ori}}</a>{% endif %}
     </p>
   </header>
-  <div class="w3-container w3-khaki w3-hide entry-text">
+  <div class="w3-panel w3-card-4 w3-round-xlarge w3-light-green w3-hide entry-text">
       {{ text }}
   </div>
 </div>
@@ -35,9 +35,7 @@
 
 
 {% macro build_list(data) -%}
-<div class="w3-container"> <!-- start -->
-  {% for title, date, ori, addr, text in data %}
-  {{ build_block(title, date, ori, addr, text) }}
-  {% endfor %}
-</div> <!-- end -->
+{% for title, date, ori, addr, text in data %}
+{{ build_block(title, date, ori, addr, text) }}
+{% endfor %}
 {%- endmacro %}

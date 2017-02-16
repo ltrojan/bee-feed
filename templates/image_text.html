@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+{% block preceding %}
+{% endblock %}
+<div class="w3-panel w3-round-xlarge">
+  <div class="w3-row-padding">
+    <div class="w3-third">
+      <div class="w3-margin">
+	{% block image %}
+	Image
+	{% endblock %}
+	</div>
+    </div>
+    <div class="w3-twothird w3-justify">
+      {% block title %}
+      {% endblock %}
+      {% block text %}
+      {% endblock %}
+    </div>
+  </div>
+</div>
+{% block following %}
+{% endblock %}
+{% endblock %}
