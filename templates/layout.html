@@ -3,60 +3,82 @@
 <!-- layout.html base template -->
 
 <html lang="en">
-
   <head>
-    <title>bee-feed</title>
-    <link
-	rel="stylesheet"
-	type="text/css"
-	href="{{ url_for('static', filename='css/w3.css') }}">
+    <title>Killinchy Beekeepers Association</title>
+    <!-- <link
+	 rel="stylesheet"
+	 type="text/css"
+	 href="{{ url_for('static', filename='css/w3.css') }}"> -->
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block head %}
     {% endblock %}
   </head>
 
+
   <body>
-    <header class="w3-container w3-yellow w3-text-deep-orange head">
-      {% block top %}
-      <h1 class="logo">
-	<img
-	    src="{{ url_for('static', filename='imgs/killinchy_logo_alp_trim_sym.png') }}"
-	    alt="Logo"
-	    width="40">
-	<span>The Killinchy Beekeepers Association</span>
-      </h1>
-      {% endblock %}
-    </header>
+    <nav
+	class="w3-sidenav w3-collapse w3-white w3-card-2 w3-text-blue"
+	style="width:200px;"
+	id="mySidenav">
+      <div class="w3-circle w3-border w3-margin w3-sand">
+	<a href="/" class="w3-padding-0">
+	  <img
+	      src="{{ url_for('static', filename='imgs/killinchy_logo_alp_trim_sym.png') }}"
+	      alt="Logo"
+	      width="100%">
+	</a>
+      </div>
+      <a
+	  href="javascript:void(0)"
+	  onclick="w3_close()"
+	  class="w3-closenav w3-large w3-hide-large">Close</a>
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/feed/">News</a>
+      {% if username %}
+      <a href="/logout/">{{ username }} (logout)</a>
+      {% else %}
+      <a href="/login/">Login</a>
+      {% endif %}
+    </nav>
 
-    <div class="w3-container w3-padding-0 w3-center nav">
-      <ul class="w3-navbar w3-yellow w3-text-deep-orange">
-	<li><a href="/">Home</a></li>
-	<li><a href="/about/">About</a></li>
-	<li><a href="/feed/">News</a></li>
-	{% if username %}
-	<li><a href="/logout/">{{ username }} (logout)</a></li>
-	{% else %}
-	<li><a href="/login/">Login</a></li>
-	{% endif %}
-      </ul>
-    </div>
-
-    <div class="w3-container w3-light-green w3-padding-0">
+    <div class="w3-container">
+      <div class="w3-container w3-main">
+	<header class="w3-card-2 w3-panel w3-round-xlarge w3-light-gray">
+	  <span class="w3-opennav w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</span>
+	  <h1 class="w3-text-blue">The Killinchy Beekeepers Association</h1>
+	</header>
+      </div>
       <div class="w3-container">
 	{% block body %}
-	<p>
-	  No Content
-	</p>
+	Hello!
 	{% endblock %}
       </div>
+      <footer class="w3-container w3-padding-0" style="margin-left:10%">
+	<div class="w3-display-container w3-margin">
+	  <img
+	      src="{{ url_for('static', filename='imgs/homepage_bottom.jpg') }}"
+	      alt="Logo"
+	      class="w3-opacity w3-round-xlarge"
+	      style="width:100%">
+	  <div class="w3-container w3-display-left">
+	    The Copyright © of all the material on this website belongs
+	    to<br>
+	    the Killinchy Beekeepers Association<br>
+	  </div>
+	</div>
+	{% block tail %}
+	{% endblock %}
+      </footer>
     </div>
-
-
-    <footer class="w3-container w3-yellow w3-text-deep-orange">
-      {% block tail %}
-      <p>Bee-Feed by Hector</p>
-      {% endblock %}
-    </footer>
+    <script>
+     function w3_open() {
+       document.getElementById("mySidenav").style.display = "block";
+     }
+     function w3_close() {
+       document.getElementById("mySidenav").style.display = "none";
+     }
+    </script>
   </body>
-
 </html>
