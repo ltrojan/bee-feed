@@ -1,0 +1,64 @@
+{% extends "image_text.html" %}
+
+
+{% block title %}
+<h2 class="w3-text-blue">About Us</h2>
+{% endblock %}
+
+
+{% block image %}
+<div class="w3-panel w3-padding-0">
+  <img
+      src="{{ url_for('static', filename='imgs/about.jpg') }}"
+      alt="Beekeeping Image"
+      class="w3-circle"
+      style="width:100%">
+</div>
+{% endblock %}
+
+
+{% block text %}
+
+<p>
+  Our association is one of the oldest local Beekeeping Associations in
+  Northern Ireland. We are affilliated to the Ulster Beekeeping Association.
+</p>
+<p>
+  We are managed by an elected committee in accordance with our Constitution.
+  Currently we have over 100 members and continue to grow.
+</p>
+<p>
+  The role of our Association is to serve our local community with support
+  and education helping us to become better Beekeepers.
+</p>
+<p>
+  Activities include beekeeping, education and training courses, mentoring
+  and advice, demonstrations and apiary meetings.
+</p>
+<p>
+  We have an informative, stimulating and entertaining programme of monthly
+  events and presentations.
+</p>
+<p>
+  Meetings are held on the 4th Wednesday of each month in
+  Andrews Memorial Primary
+  School, Comber
+  (click the pin
+  <a
+      href="https://www.google.co.uk/maps/place/Andrews+Memorial+Primary+School/@54.5470789,-5.7575155,17z/data=!4m2!3m1!1s0x48610cbe1998ce6f:0xd3af0b9d3657a806"
+      target="_blank"
+      data-content="https://www.google.co.uk/maps/place/Andrews+Memorial+Primary+School/@54.5470789,-5.7575155,17z/data=!4m2!3m1!1s0x48610cbe1998ce6f:0xd3af0b9d3657a806"
+      data-type="external">
+    <img
+	src="{{ url_for('static', filename='imgs/map-pin-red-md.png') }}"
+	class="w3-opacity"
+	style="height:25px;"></a> for directions).
+</p>
+<p>
+  Throughout the summer months we also run a programme at our Apiary site.
+</p>
+<p>
+  Funds are raised through our membership and various other events held
+  throughout the year.
+</p>
+{% endblock %}
