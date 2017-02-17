@@ -21,66 +21,17 @@
   <body>
     <nav
 	class="w3-sidenav w3-collapse w3-white w3-card-2 w3-text-blue"
-	style="width:200px;"
-	id="mySidenav">
-      <div class="w3-circle w3-border w3-margin w3-sand">
-	<a href="/" class="w3-padding-0">
-	  <img
-	      src="{{ url_for('static', filename='imgs/killinchy_logo_alp_trim_sym.png') }}"
-	      alt="Logo"
-	      width="100%">
-	</a>
-      </div>
-      <a
-	  href="javascript:void(0)"
-	  onclick="w3_close()"
-	  class="w3-closenav w3-large w3-hide-large">Close</a>
-      <a href="/">Home</a>
-      <a href="/about/">About</a>
-      <a href="/feed/">News</a>
-      {% if username %}
-      <a href="/logout/">{{ username }} (logout)</a>
-      {% else %}
-      <a href="/login/">Login</a>
-      {% endif %}
+	style="width:140px;">
+      {% include "sidenav.html" ignore missing %}
     </nav>
-
-    <div class="w3-container w3-main" style="margin-left:200px">
-      <div class="w3-container">
-	<header class="w3-card-2 w3-panel w3-round-xlarge w3-light-gray">
-	  <span class="w3-opennav w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</span>
-	  <h1 class="w3-text-blue">The Killinchy Beekeepers Association</h1>
-	</header>
-      </div>
-      <div class="w3-container">
+    <div class="w3-container w3-main" style="margin-left:140px">
+      {% include "title.html" ignore missing %}
+      <div class="w3-container w3-padding-0">
 	{% block body %}
 	Hello!
 	{% endblock %}
       </div>
-      <footer class="w3-container w3-padding-0">
-	<div class="w3-display-container w3-margin">
-	  <img
-	      src="{{ url_for('static', filename='imgs/homepage_bottom.jpg') }}"
-	      alt="Logo"
-	      class="w3-opacity w3-round-xlarge"
-	      style="width:100%">
-	  <div class="w3-container w3-display-left">
-	    The Copyright © of all the material on this website belongs
-	    to<br>
-	    the Killinchy Beekeepers Association<br>
-	  </div>
-	</div>
-	{% block tail %}
-	{% endblock %}
-      </footer>
+      {% include "footer.html" ignore missing %}
     </div>
-    <script>
-     function w3_open() {
-       document.getElementById("mySidenav").style.display = "block";
-     }
-     function w3_close() {
-       document.getElementById("mySidenav").style.display = "none";
-     }
-    </script>
   </body>
 </html>
