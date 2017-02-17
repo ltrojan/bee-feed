@@ -22,7 +22,7 @@
   <body>
     {% set sidenav_width = "120px" %}
     {% include "sidenav.html" %}
-    <div class="w3-container w3-main" style="margin-left:{{ sidenav_width }}px">
+    <div class="w3-container w3-main" style="margin-left:{{ sidenav_width }}">
       {% include "title.html" ignore missing %}
       <div class="w3-container w3-padding-0">
 	{% block body %}
