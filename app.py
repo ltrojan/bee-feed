@@ -28,9 +28,20 @@ def home():
     return flask.render_template('home.html', username=flask.session.get('username', None))
 
 
-@App.route('/contact_us/', methods=['POST'])
-def contact_us():
+@App.route('/_message/', methods=['POST'])
+def _message():
+    print("message received")
     return flask.redirect(flask.url_for('home'))
+
+
+@App.route('/team/')
+def team():
+    return flask.render_template('team.html')
+
+
+@App.route('/contact_us/')
+def contact_us():
+    return flask.render_template('contact_us.html')
 
 
 @App.route('/about/')
