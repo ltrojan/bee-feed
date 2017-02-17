@@ -18,12 +18,12 @@
   <a href="/">Home</a>
   <div class="w3-dropdown-hover w3-text-blue">
     <a href="/about/">About <i class="fa fa-caret-down"></i></a>
-    <div class="w3-dropdown-content w3-text-blue">
-      <a href="/about/">About</a>
+    <did class="w3-dropdown-content w3-small w3-card w3-text-blue">
+      <a href="#">The Team</a>
+      <a href="#">Contacts</a>
     </div>
   </div>
   <a href="/feed/">News</a>
-  <a href="#">Events</a>
   {% if username %}
   <a href="/logout/">{{ username }} (logout)</a>
   {% else %}
@@ -34,7 +34,6 @@
  function sidenav_open() {
    document.getElementById("mySidenav").style.display = "block";
  }
-
  function sidenav_close() {
    document.getElementById("mySidenav").style.display = "none";
  }
