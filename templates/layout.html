@@ -20,19 +20,19 @@
     {% endblock %}
   </head>
   <body background="{{ url_for('static', filename='imgs/bck.jpg') }}">
-    <div style="min-width:250px;">
-      {% set sidenav_width = "120px" %}
-      {% include "sidenav.html" %}
-      <!-- style="margin-left:{{ sidenav_width }}" -->
-      <div class="w3-container w3-main w3-content">
-	{% include "title.html" ignore missing %}
-	<div class="w3-container w3-padding-0">
-	  {% block body %}
-	  Hello!
-	  {% endblock %}
-	</div>
-	{% include "footer.html" ignore missing %}
+    {% set sidenav_width = "120px" %}
+    {% include "sidenav.html" %}
+    <!-- style="margin-left:{{ sidenav_width }}" -->
+    <div
+	class="w3-container w3-main w3-content"
+	style="margin-left:{{ sidenav_width }}">
+      {% include "title.html" ignore missing %}
+      <div class="w3-container w3-padding-0">
+	{% block body %}
+	Hello!
+	{% endblock %}
       </div>
+      {% include "footer.html" ignore missing %}
     </div>
   </body>
 
