@@ -1,12 +1,12 @@
 {% extends "image_text.html" %}
 
 
-{% block nopreceding %}
+{% block preceding %}
 <div class="w3-panel w3-padding-0">
   <img
      src="{{ url_for('static', filename='imgs/homepage.jpg') }}"
      alt="Beekeeping Image"
-     class="w3-circle"
+     class="w3-round-xlarge"
      style="width:100%">
 </div>
 {% endblock %}
@@ -45,6 +45,9 @@
 <p>
   Please feel free to contact us for any enquiries you may have.
 </p>
+{% endblock %}
+{% block following%}
 {% include "contact.html" %}
 {% endblock %}
+
 
