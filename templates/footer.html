@@ -1,0 +1,16 @@
+<footer class="w3-container w3-padding-0">
+  <div class="w3-display-container w3-margin">
+    <img
+	src="{{ url_for('static', filename='imgs/homepage_bottom.jpg') }}"
+	alt="Logo"
+	class="w3-opacity w3-round-xlarge"
+	style="width:100%">
+    <div class="w3-container w3-display-left">
+      The Copyright © of all the material on this website belongs
+      to<br>
+      the Killinchy Beekeepers Association<br>
+    </div>
+  </div>
+  {% block footer_tail %}
+  {% endblock %}
+</footer>
