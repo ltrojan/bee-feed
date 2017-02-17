@@ -1,0 +1,28 @@
+<div class='w3-container'>
+  <!-- form -->
+  <form action="{{ url_for('contact_us') }}" method=post class="w3-panel w3-card-4 w3-light-grey">
+    <h3 class="w3-text-blue">Contact Us</h3>
+    <p>
+      <label class="w3-label w3-text-blue">Your Name</label>
+      <input class="w3-input w3-border" type="text" name=name>
+    </p>
+    <p>
+      <label class="w3-label w3-text-blue">Your Email</label><br>
+      <input class="w3-input w3-border" type="text" name=email>
+    </p>
+    <p>
+      <label class="w3-label w3-text-blue">Subject</label><br>
+      <input class="w3-input w3-border" type="text" name=subject>
+    </p>
+    <p>
+      <textarea
+	 rows="7"
+	 cols="50"
+	 name="comment"
+	 form="usrform"
+	 style="resize: none; width: 100%;">Your Message</textarea>
+    </p>
+      <button class="w3-btn w3-blue" type=submit value=Login>Send</button>
+    </p>
+  </form>
+</div>
