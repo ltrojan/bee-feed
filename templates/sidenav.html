@@ -1,4 +1,7 @@
-<div class="w3-container w3-padding-0" id="mySidenav">
+<nav
+    class="w3-sidenav w3-collapse w3-white w3-card-2 w3-text-blue"
+    id="mySidenav"
+    style="width:{{ sidenav_width }};">
   <div class="w3-container" style="width:100%">
     <a class="w3-padding-0" href="/">
       <img
@@ -27,13 +30,13 @@
   {% else %}
   <a href="/login/">Login</a>
   {% endif %}
-</div>
+</nav>
 <script>
- function w3_open() {
+ function sidenav_open() {
    document.getElementById("mySidenav").style.display = "block";
  }
 
- function w3_close() {
+ function sidenav_close() {
    document.getElementById("mySidenav").style.display = "none";
  }
 </script>
