@@ -12,7 +12,7 @@ def get_feed(url):
 
 
 def gen_entries(named_urls):
-    for ori, url in named_urls.iteritems():
+    for ori, url in named_urls.items():
         for ent in get_feed(url)['entries']:
             ent['ori'] = ori
             yield ent
