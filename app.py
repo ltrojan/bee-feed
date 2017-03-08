@@ -25,7 +25,8 @@ def teardown_request(exception):
 
 @App.route('/')
 def home():
-    return flask.render_template('home.html', username=flask.session.get('username', None))
+    return flask.render_template(
+        'home.html', username=flask.session.get('username', None))
 
 
 @App.route('/_message/', methods=['POST'])
