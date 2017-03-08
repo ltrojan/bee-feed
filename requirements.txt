@@ -1,0 +1,6 @@
+click==2.0
+flask==0.12
+datetime==4.1.1
+markdown==2.6.8
+feedparser==5.2.1
+python_dateutil==2.6.0
